@@ -1,0 +1,30 @@
+p {
+    background: #868686;
+    color: #000000;
+    text-align: center;
+}
+
+#left, #right {
+    margin: 20px 0px 200px 0px;
+    height: 300px;
+    text-align: center;
+    line-height: 300px;
+}
+
+#left {
+    background: #0c09ce;
+    width: 50%;
+    float: left;
+}
+
+#right {
+    background: #ff0000;
+    width: 25%;
+    float: right;
+}
+
+#footer {
+    background: #058d00;
+    text-align: center;
+    clear: both;
+}
