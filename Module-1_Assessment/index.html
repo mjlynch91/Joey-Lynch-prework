@@ -14,28 +14,33 @@
     </head>
 
     <body>
-        <!-- The navigation bar -->
+        <!-- The navigation bar / header-->
+        <!-- <div class="container-fluid main_header fixed-top"> -->
+   
+        <!-- main_header class overrides bootstrap properties -->
         <div class="container main_header">
-            <nav class="navbar navbar-expand-sm bg-light navbar-light">
-                <ul class="nav navbar-nav">
+            <nav class="navbar navbar-expand-sm bg-light navbar-light m-0 p-0">
+                <ul class="nav navbar-brand m-0 p-0">
                     <li class="nav-item active">
                         <!-- my_name class overrides bootstrap properties -->
                         <a class="nav-link my_name" href="index.html">Joey Lynch</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav ml-auto">
-                  <li class="nav-item">
-                     <a class="nav-link" href="index.html">About</a> 
-                  </li>
-                  <li class="nav-item">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">About</a> 
+                    </li>
+                    <li class="nav-item">
                     <a class="nav-link" href="portfolio.html">Portfolio</a>
-                  </li>
-                  <li class="nav-item">
+                    </li>
+                    <li class="nav-item">
                     <a class="nav-link" href="contact.html">Contact</a>
-                  </li>
+                    </li>
                 </ul>
             </nav>
         </div>
+
+
         <!-- The main body -->
         <div class="container main_content"> 
             <div class="row border-bottom">
@@ -60,8 +65,9 @@
                 <p>I have a YouTube channel named Heisenberg's Dog. The content on there is mostly about physical chemisty and spectroscopy, but I'm starting to make more electronics videos.</p>
             </div>
         </div>
+ 
         <!-- The footer -->
-        <div class="container-fluid footer">
+        <div class="container-fluid footer fixed-bottom">
             <p class="text-center">Copyright</p>
         </div>
     </body>

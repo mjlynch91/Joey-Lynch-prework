@@ -15,6 +15,9 @@ button {
 .my_name {
     background-color: #4aaaa5 !important;
     color:white !important;
+
+    /* margin-top: 0px !important; */
+    /* margin-bottom: 0px !important; */
 }
 
 p {
@@ -25,6 +28,10 @@ p {
 .main_header {
     background-color: #ffffff !important;
     border-color: #cccccc !important;
+    /* padding-top: 0% !important; */
+    /* padding-bottom: 0% !important; */
+    /* margin-top: 0px !important; */
+    /* margin-bottom: 0px !important; */
 }
 
 .footer {
@@ -38,4 +45,3 @@ p {
     margin-top:20px;
     margin-bottom:60px;
 }
-
