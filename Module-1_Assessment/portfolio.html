@@ -14,25 +14,30 @@
     </head>
 
     <body>
-        <!-- The navigation bar -->
-        <div class="container">
-            <div class="row">
-                <nav class="navbar navbar-expand-sm bg-light navbar-light">
-                    <ul class="navbar-nav">
+        <!-- The navigation bar / header-->
+        <div class="container-fluid main_header">
+   
+            <!-- main_header class overrides bootstrap properties -->
+            <div class="container main_header">
+                <nav class="navbar navbar-expand-sm bg-light navbar-light p-0 main_header">
+                    <ul class="nav navbar-brand p-0">
                         <li class="nav-item active">
-                            <a class="nav-link" href="index.html">Joey Lynch</a>
-                          </li>
-                          <li class="nav-item">
-                             <a class="nav-link" href="index.html">About</a> 
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="portfolio.html">Portfolio</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contact</a>
-                          </li>
+                            <!-- my_name class overrides bootstrap properties -->
+                            <a class="nav-link my_name" href="index.html">Joey Lynch</a>
+                        </li>
                     </ul>
-                  </nav>
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">About</a> 
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="portfolio.html">Portfolio</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </div>
         <!-- The main body -->
@@ -51,9 +56,10 @@
             </div>
         </div>
         <!-- The footer -->
-        <div class="container">
-            <div class="row">
-                
+        <div class="container-fluid footer fixed-bottom">
+            <div class="row h-75"></div>
+            <div class="row justify-content-center">
+                <p class="text-center m-0 p-0">Copyright</p>
             </div>
         </div>
     </body>
