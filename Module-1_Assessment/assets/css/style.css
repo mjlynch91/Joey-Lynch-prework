@@ -45,3 +45,7 @@ p {
     margin-top:20px;
     margin-bottom:60px;
 }
+
+.about_me_border {
+    border-width: 3px !important;
+}

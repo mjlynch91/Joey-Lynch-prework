@@ -15,54 +15,55 @@
 
     <body>
         <!-- The navigation bar / header-->
-        <!-- <div class="container-fluid main_header fixed-top"> -->
+        <div class="container-fluid main_header">
    
-        <!-- main_header class overrides bootstrap properties -->
-        <div class="container main_header">
-            <nav class="navbar navbar-expand-sm bg-light navbar-light m-0 p-0">
-                <ul class="nav navbar-brand m-0 p-0">
-                    <li class="nav-item active">
-                        <!-- my_name class overrides bootstrap properties -->
-                        <a class="nav-link my_name" href="index.html">Joey Lynch</a>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">About</a> 
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="portfolio.html">Portfolio</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact</a>
-                    </li>
-                </ul>
-            </nav>
+            <!-- main_header class overrides bootstrap properties -->
+            <div class="container main_header">
+                <nav class="navbar navbar-expand-sm bg-light navbar-light p-0 main_header">
+                    <ul class="nav navbar-brand p-0">
+                        <li class="nav-item active">
+                            <!-- my_name class overrides bootstrap properties -->
+                            <a class="nav-link my_name" href="index.html">Joey Lynch</a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">About</a> 
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="portfolio.html">Portfolio</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </div>
 
 
         <!-- The main body -->
         <div class="container main_content"> 
-            <div class="row border-bottom">
-                <h1>About Me</h1>
-            </div>
-            <!-- Line under about me -->
-            <div class="row"></div>
-            <div class="row">
-                <div class="col-sm-2">
-                    <img class="img-fluid" src="assets/images/Me1.PNG">
+            <div class="container p-3">
+                <div class="row border-bottom mb-3 about_me_border">
+                    <h1 class="p-3">About Me</h1>
                 </div>
-                <div class="col-sm-10">
-                    <p>
-                        My name is Joey Lynch. I grew up in Fargo, ND and joined the Marine Corps after high school. After my four year enlistment I went to University of Colorado Boulder to study chemistry. I recieved my B.S. in chemistry, graduating summa cum laude, in 2017. After that I went to University of Minneasota Twin Cities to study chemistry in grad school. I started coding while in grad school and enjoyed it more than I enjoyed the chemistry, so I decided to switch my carrer.
-                    </p>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <img class="img-fluid" src="assets/images/Me1.PNG">
+                    </div>
+                    <div class="col-sm-10">
+                        <p>
+                            My name is Joey Lynch. I grew up in Fargo, ND and joined the Marine Corps after high school. After my four year enlistment I went to University of Colorado Boulder to study chemistry. I recieved my B.S. in chemistry, graduating summa cum laude, in 2017. After that I went to University of Minneasota Twin Cities to study chemistry in grad school. I started coding while in grad school and enjoyed it more than I enjoyed the chemistry, so I decided to switch my carrer.
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <p>In my spare time I like to automate my house with IoT devices. That is actually part of the reason, I find coding interesting. To program microcontrollers to do IoT things, they need to be programmed and I wanted to learn how to do that myself. I also tinker with electronics in my spare time.</p>
-            </div>
-            <div class="row">
-                <p>I have a YouTube channel named Heisenberg's Dog. The content on there is mostly about physical chemisty and spectroscopy, but I'm starting to make more electronics videos.</p>
+                <div class="row pt-3 pr-3 pl-3">
+                    <p>In my spare time I like to automate my house with IoT devices. That is actually part of the reason, I find coding interesting. To program microcontrollers to do IoT things, they need to be programmed and I wanted to learn how to do that myself. I also tinker with electronics in my spare time.</p>
+                </div>
+                <div class="row pr-3 pl-3">
+                    <p>I have a YouTube channel named Heisenberg's Dog. The content on there is mostly about physical chemisty and spectroscopy, but I'm starting to make more electronics videos.</p>
+                </div>
             </div>
         </div>
  
