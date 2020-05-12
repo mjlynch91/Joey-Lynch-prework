@@ -12,14 +12,6 @@ button {
     border-color: #4aaaa5 !important;
 }
 
-.my_name {
-    background-color: #4aaaa5 !important;
-    color:white !important;
-
-    /* margin-top: 0px !important; */
-    /* margin-bottom: 0px !important; */
-}
-
 p {
     color:#777777 !important;
     font-family:'Arial', 'Helvetica Neue', Helvetica, sans-serif;
@@ -34,9 +26,16 @@ p {
     /* margin-bottom: 0px !important; */
 }
 
-.footer {
-    background-color: #666666 !important;
-    border-top: 6px solid #4aaaa5 !important;
+.my_name {
+    background-color: #4aaaa5 !important;
+    color:white !important;
+
+    /* margin-top: 0px !important; */
+    /* margin-bottom: 0px !important; */
+}
+
+.about_me_border {
+    border-width: 3px !important;
 }
 
 .main_content {
@@ -46,6 +45,12 @@ p {
     margin-bottom:60px;
 }
 
-.about_me_border {
-    border-width: 3px !important;
+.footer {
+    background-color: #666666 !important;
+    border-top: 6px solid #4aaaa5 !important;
+    height: 100px;
+    /* line-height: 100px; */
+    /* padding-bottom: 0px !important; */
+    /* margin-bottom: 0px !important; */
+    /* text-align: center; */
 }
