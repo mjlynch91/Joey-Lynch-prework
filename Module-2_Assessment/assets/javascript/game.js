@@ -1,11 +1,14 @@
 //function to initailize a new game
 const startGame = function() {
     gameRunning = true;
+    guessesLeft = 10;
     pickWord();
+    guessesRef.innerText = guessesLeft;
+    wordRef.innerText = "";
     for(var i = 0; i < currentWord.length; i++){
-        document.querySelector("#current_word").innerText += "_"; 
+        wordRef.innerText += "_"; 
     }
-    document.querySelector("#start").innerText = "You are now playing!";
+    startRef.innerText = "You are now playing!";
     console.log(`gameRunning = ${gameRunning}`);
 }
 
@@ -18,26 +21,28 @@ const pickWord= function() {
 
 //function to check if the key the user pressed in in the current word
 function checkKey(event) {
-    var key = event.key;
-    console.log(key);
-    var position = currentWord.search(key);
-    if(position!=-1){
-        console.log('The key you pressed is in the word!');
-        updateBlanks(position);
-        // updateBlanks(position);
-        // console.log(document.querySelector("#current_word").textContent.length);
-    } else{console.log('try again')};
-    guessesLeft--;
-    document.querySelector("#guesses").innerText = guessesLeft;
+    if(guessesLeft > 0){
+        var key = event.key;
+        console.log(key);
+        var position = currentWord.search(key);
+        if(position!=-1){
+            console.log('The key you pressed is in the word!');
+            updateBlanks(position);
+        } else{console.log('try again')};
+        guessesLeft--;
+        guessesRef.innerText = guessesLeft;
+    } else {
+        startRef.innerText = "You are out of guesses! Click here to try again.";
+    }
 }
 
 //change an underscore to reveal a correct guesse's letter
 function updateBlanks(position) {
     var splitWord = currentWord.split("");
     var currentChar = splitWord[position];
-    var splitBlanks = document.querySelector("#current_word").innerText.split("");
+    var splitBlanks = wordRef.innerText.split("");
     splitBlanks[position] = currentChar;
-    document.querySelector("#current_word").innerText = splitBlanks.join("");
+    wordRef.innerText = splitBlanks.join("");
 }
 
 //make a list of words
@@ -45,15 +50,17 @@ const wordList = ["space", "astronaut", "Neil Armstrong", "Buzz Aldrin", "Apollo
 
 //is game running or not?
 let gameRunning = false;
-console.log(`gameRunning = ${gameRunning}`);
 var currentWord;
-let startRef = document.querySelector("#start");
-//start the game when the user clicks
-startRef.addEventListener("click", startGame);
 var guessesLeft = 10;
 
+//references to the HTML text
+let startRef = document.querySelector("#start");
+let guessesRef = document.querySelector("#guesses");
+let wordRef = document.querySelector("#current_word");
+
+//start the game when the user clicks
+document.querySelector("#start").addEventListener("click", startGame);
 document.addEventListener('keyup', checkKey);
-// var guessesHTML = document.querySelector("#guesses").innerText;
 
 
 
