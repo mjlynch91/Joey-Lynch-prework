@@ -28,6 +28,7 @@ function checkKey(event) {
         // console.log(document.querySelector("#current_word").textContent.length);
     } else{console.log('try again')};
     guessesLeft--;
+    document.querySelector("#guesses").innerText = guessesLeft;
 }
 
 //change an underscore to reveal a correct guesse's letter
@@ -47,9 +48,12 @@ let gameRunning = false;
 console.log(`gameRunning = ${gameRunning}`);
 var currentWord;
 let startRef = document.querySelector("#start");
-var guessesLeft = 10;
 //start the game when the user clicks
 startRef.addEventListener("click", startGame);
+var guessesLeft = 10;
 
-//get key pressed and check if it's in current word
 document.addEventListener('keyup', checkKey);
+// var guessesHTML = document.querySelector("#guesses").innerText;
+
+
+
