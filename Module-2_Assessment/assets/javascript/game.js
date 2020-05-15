@@ -3,14 +3,31 @@ const startGame = function() {
     gameRunning = true;
     guessesLeft = 10;
     pickWord();
-    guessesRef.innerText = guessesLeft;
-    letterRef.innerText = "";
-    wordRef.innerText = "";
+    guessesRef.innerText = guessesLeft; //reset number of guesses text
+    letterRef.innerText = "";  //reset letters already guessed
+    wordRef.innerText = ""; //reset current word text
+    correctGuesses = 0; //reset number of correct guesses
     for(var i = 0; i < currentWord.length; i++){
-        wordRef.innerText += "_"; 
+        wordRef.innerText += "_" + " "; 
     }
     startRef.innerText = "You are now playing!";
     console.log(`gameRunning = ${gameRunning}`);
+}
+
+const endGame = function() {
+    if(guessesLeft > 0){
+        startRef.innerText = "You Won! Congrats Smarty Pants! Press any key to try again.";
+    } else{
+        startRef.innerText = "You are out of guesses! Press any key to try again.";
+    };
+    gameRunning = false;
+    console.log(`gameRunning = ${gameRunning}`);
+}
+
+const checkGame = function(event) {
+    if(gameRunning === false){
+        startGame();
+    } else {checkKey(event);};
 }
 
 //function to pick a random word out of list
@@ -22,27 +39,21 @@ const pickWord= function() {
 
 //function to check if the key the user pressed in in the current word
 function checkKey(event) {
-    if(guessesLeft > 0){ //check if user has more guesses
-        var key = event.key; //get the key that was pressed
-        console.log(key);
-        var position = currentWord.search(key); //numerical position of the letter guessed in the word
-        var splitWord = Array.from(currentWord); //splits string to array of chars. Ran into problems using string.split("") so changed to Array.from
-        console.log(splitWord);
-        // var currentChar = splitWord[position]; //char that user guessed. needs to be shown
-        // console.log(currentChar);
-        letterRef.innerText += key; //show each letter guessed
 
-        if(position!=-1){ //update the word, showing the correct letter in it
-            console.log('The key you pressed is in the word!');
-            updateBlanks(position, key);
-        } else{console.log('try again')};
+    var key = event.key; //get the key that was pressed
+    var position = currentWord.search(key); //numerical position of the letter guessed in the word
+    var splitWord = Array.from(currentWord); //splits string to array of chars. Ran into problems using string.split("") so changed to Array.from
+    letterRef.innerText += (key + " "); //show each letter guessed
 
-        guessesLeft--; //decrease guesses
-        guessesRef.innerText = guessesLeft;
-    } else {
-        startRef.innerText = "You are out of guesses! Click here to try again.";
-    }
-    
+    if(position!=-1){ //if the letter guessed is in the word, update the word, showing the correct letter in it
+        updateBlanks(position, key);
+        correctGuesses++;
+        correctGuessesRef.innerText = correctGuesses;
+        if(correctGuesses === currentWord.length){endGame();};
+    };
+    guessesLeft--; //decrease guesses
+    guessesRef.innerText = guessesLeft;
+    if(guessesLeft === 0){endGame();};   
 }
 
 //change an underscore to reveal a correct guesse's letter
@@ -53,23 +64,26 @@ function updateBlanks(position, charToReplace) {
 }
 
 //make a list of words
-const wordList = ["space", "astronaut", "Neil Armstrong", "Buzz Aldrin", "Apollo", "Mars", "Venus", "Jupiter", "Saturn", "Neptune", "Uranus", "Pluto"];
-
+const wordList = ["space", "astronaut", "Armstrong", "Aldrin", "Apollo", "Mercury", "Earth", "Mars", "Venus", "Jupiter", "Saturn", "Neptune",
+ "Uranus", "Pluto", "planet", "nebula", "galaxy", "star", "supernova", "asteriod", "meteor", "meteoroid", "meterorite", "blackhole", "gravity"]; //don't put any words with spaces. the code doesn't account for that
+for(let i =0; i < wordList.length; i++){
+    wordList[i]=wordList[i].toLowerCase();
+    
+};
 //is game running or not?
 let gameRunning = false;
 var currentWord;
 var guessesLeft = 10;
+let correctGuesses = 0;
 
 //references to the HTML text
 let startRef = document.querySelector("#start");
 let guessesRef = document.querySelector("#guesses");
+let correctGuessesRef = document.querySelector("#wins");
 let wordRef = document.querySelector("#current_word");
 let letterRef = document.querySelector("#letters_tried");
 
-//start the game when the user clicks
-document.querySelector("#start").addEventListener("click", startGame);
-
-document.addEventListener('keyup', checkKey);
-
+//upon key press, check to see whether the game is running. If it isn't start it. If it is check which key was pressed.
+document.addEventListener("keyup", checkGame);
 
 
