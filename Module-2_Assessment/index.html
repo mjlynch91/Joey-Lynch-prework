@@ -7,16 +7,81 @@
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
-    <title>Game</title>
+    <title>Hangman Game</title>
   </head>
+
   <body>
-    <h1 id="start">Press any key to get started!</h1>
-    <h1>Guesses Left:</h1>
-    <h1 id="guesses">10</h1>
-    <h1># Wins:</h1>
-    <h1 id="wins">0</h1>
-    <h1 id="current_word"></h1>
-    <h1 id="letters_tried"></h1>
+      <!-- The navigation bar / header-->
+      <div class="container-fluid main_header">
+ 
+          <!-- main_header class overrides bootstrap properties -->
+          <div class="container">
+              <nav class="navbar navbar-expand-sm p-0">
+                  <ul class="nav navbar-brand p-0">
+                      <li class="nav-item active">
+                          <!-- my_name class overrides bootstrap properties -->
+                          <a class="nav-link my_name" href="index.html">Joey Lynch</a>
+                      </li>
+                  </ul>
+                  <ul class="nav navbar-nav ml-auto">
+                      <li class="nav-item">
+                          <a class="nav-link" href="https://space-facts.com/" target="_blank">Space facts</a> 
+                      </li>
+                      <li class="nav-item">
+                      <a class="nav-link" href="https://www.google.com/search?q=space&sxsrf=ALeKk00ZuM6dOOUU-8c0X8jumkbMFEW6qg:1589580494645&source=lnms&tbm=isch&sa=X&ved=2ahUKEwiDgObl8LbpAhXMXM0KHbrgCDoQ_AUoAXoECA0QAw&biw=1920&bih=888">Space Pictures</a>
+                      </li>
+                      <li class="nav-item">
+                      <a class="nav-link" href="https://www.wired.co.uk/article/best-space-movies">Space Movies</a>
+                      </li>
+                  </ul>
+              </nav>
+          </div>
+      </div>
+
+      <!-- The main body -->
+      <div class="container main_content"> 
+          <div class="container p-3">
+              <div class="row border-bottom mb-3 main_content_border">
+                  <h1>Welcome to Hangman Space</h1>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <h1 class="p-3" id="start">Press any key to get started!</h1>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <h1>Guesses Left:</h1>
+                  <h1 id="guesses">10</h1>
+                </div>
+                <div class="col-sm-6">
+                  <h1># Wins:</h1>
+                  <h1 id="wins">0</h1>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <h1 id="current_word"></h1>
+                </div>
+                <div class="col-sm-6">
+                  <h1 id="letters_tried"></h1>
+                </div>
+              </div>
+
+
+
+          </div>
+      </div>
+
+      <!-- The footer -->
+      <div class="container-fluid footer fixed-bottom">
+          <div class="row h-75"></div>
+          <div class="row justify-content-center">
+              <p class="text-center m-0 p-0">Copyright &copy</p>
+          </div>
+      </div>
+ 
+    
     
 
 

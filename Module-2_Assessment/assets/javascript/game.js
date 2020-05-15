@@ -1,3 +1,16 @@
+/* This program runs a hangman style game on index.html.  The user is given a certain number of guesses.
+The user must guess all the letters in the word before the guesses run out. The word is chosen randomly out of a 
+list of words I made up. 
+The code is organized into 2 sections.
+The first section is where I declare and define all sections. The section is where the "main" program is.
+I'm used to coding in C so that why I broke it up this way, because that's how it's done in C.*/
+
+
+
+/**************************************************************************
+ Function declarations and definitions
+ *************************************************************************/
+
 //function to initailize a new game
 const startGame = function() {
     gameRunning = true;
@@ -80,12 +93,17 @@ function updateBlanks(position, charToReplace) {
     wordRef.innerText = splitBlanks.join(""); 
 }
 
+
+/**************************************************************************
+ MAIN
+ *************************************************************************/
+ 
+
 //make a list of words
 const wordList = ["space", "astronaut", "Armstrong", "Aldrin", "Apollo", "Mercury", "Earth", "Mars", "Venus", "Jupiter", "Saturn", "Neptune",
  "Uranus", "Pluto", "planet", "nebula", "galaxy", "star", "supernova", "asteriod", "meteor", "meteoroid", "meterorite", "blackhole", "gravity"]; //don't put any words with spaces. the code doesn't account for that
 for(let i =0; i < wordList.length; i++){
     wordList[i]=wordList[i].toLowerCase();
-    
 };
 //is game running or not?
 let gameRunning = false;

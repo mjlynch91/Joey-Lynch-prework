@@ -1,0 +1,57 @@
+body {
+    background-image: url("../images/space1.jpg");
+    font-family:'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+    color:#777777 !important;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    color:#f8f8f8;
+    font-family: 'Georgia', Times, Times New Roman, serif;
+}
+
+.main_header {
+    background-image: url("../images/planets2.png");
+    background-size: 100% 100%;
+    border-color: #cccccc !important;
+}
+
+.my_name {
+    background-color: #4aaaa5 !important;
+    color:white !important;
+}
+
+.main_content_border {
+    border-width: 3px !important;
+}
+
+.main_content {
+    width: 960px;
+    background-color: #72727283 !important;
+    
+    border-color: #dddddd !important;
+    margin-top:20px;
+    margin-bottom:60px;
+}
+
+.img-container{
+    position: relative;
+    display: inline-block;
+}
+.img-text{
+    bottom:5%;
+    width:100%;
+    height:20%;
+    font-size: 2em;
+    position: absolute;
+    background-color: #4aaaa5;
+    color:white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer {
+    background-color: #666666 !important;
+    border-top: 6px solid #4aaaa5 !important;
+    height: 100px;
+}
