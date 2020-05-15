@@ -42,22 +42,34 @@ function checkKey(event) {
 
     let key = event.key; //get the key that was pressed
     console.log(typeof(key));
-    let position = currentWord.search(key); //numerical position of the letter guessed in the word. Used the search() method at first, but later had to make own function to accomadate for duplicate letters.
+    //let position = currentWord.search(key); //numerical position of the letter guessed in the word. Used the search() method at first, but later had to make own function to accomadate for duplicate letters.
+    let positions = getPositions(key, currentWord);
     letterRef.innerText += (key + "\xa0\xa0\xa0\xa0\xa0"); //show each letter guessed
 
-    if(position!=-1){ //if the letter guessed is in the word, update the word, showing the correct letter in it
-        updateBlanks(position, key);
-        correctGuesses++;
+    if(positions.length > 0){ //if the letter guessed is in the word, update the word, showing the correct letter(s) in it
+        for(let i = 0; i < positions.length; i++){ 
+            updateBlanks(positions[i], key);
+        }
+        correctGuesses+=positions.length;
         correctGuessesRef.innerText = correctGuesses;
         if(correctGuesses === currentWord.length){endGame();};
     };
+
     guessesLeft--; //decrease guesses
     guessesRef.innerText = guessesLeft;
     if(guessesLeft === 0){endGame();};   
 }
 
+//function that check for all occurences of letter in word and returns array of index where it occurs
 function getPositions(letter, word){
     let splitWord = Array.from(word); //splits string to array of chars. Ran into problems using string.split("") so changed to Array.from
+    let positions = [];
+    for(let i = 0; i < splitWord.length; i++){
+        if(splitWord[i]===letter){
+            positions.push(i);
+        };
+    };
+    return positions;
 }
 
 //change an underscore to reveal a correct guesse's letter
