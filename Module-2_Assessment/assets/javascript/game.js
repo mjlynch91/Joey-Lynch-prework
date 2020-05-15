@@ -7,8 +7,8 @@ const startGame = function() {
     letterRef.innerText = "";  //reset letters already guessed
     wordRef.innerText = ""; //reset current word text
     correctGuesses = 0; //reset number of correct guesses
-    for(var i = 0; i < currentWord.length; i++){
-        wordRef.innerText += "_" + " "; 
+    for(let i = 0; i < currentWord.length; i++){
+        wordRef.innerText += "_" + "\xa0"; 
     }
     startRef.innerText = "You are now playing!";
     console.log(`gameRunning = ${gameRunning}`);
@@ -32,7 +32,7 @@ const checkGame = function(event) {
 
 //function to pick a random word out of list
 const pickWord= function() {
-    var randInt = Math.floor(Math.random() * wordList.length); 
+    let randInt = Math.floor(Math.random() * wordList.length); 
     currentWord = wordList[randInt];
     console.log(currentWord);
 }
@@ -40,10 +40,10 @@ const pickWord= function() {
 //function to check if the key the user pressed in in the current word
 function checkKey(event) {
 
-    var key = event.key; //get the key that was pressed
-    var position = currentWord.search(key); //numerical position of the letter guessed in the word
-    var splitWord = Array.from(currentWord); //splits string to array of chars. Ran into problems using string.split("") so changed to Array.from
-    letterRef.innerText += (key + " "); //show each letter guessed
+    let key = event.key; //get the key that was pressed
+    console.log(typeof(key));
+    let position = currentWord.search(key); //numerical position of the letter guessed in the word. Used the search() method at first, but later had to make own function to accomadate for duplicate letters.
+    letterRef.innerText += (key + "\xa0\xa0\xa0\xa0\xa0"); //show each letter guessed
 
     if(position!=-1){ //if the letter guessed is in the word, update the word, showing the correct letter in it
         updateBlanks(position, key);
@@ -56,9 +56,14 @@ function checkKey(event) {
     if(guessesLeft === 0){endGame();};   
 }
 
+function getPositions(letter, word){
+    let splitWord = Array.from(word); //splits string to array of chars. Ran into problems using string.split("") so changed to Array.from
+}
+
 //change an underscore to reveal a correct guesse's letter
 function updateBlanks(position, charToReplace) {
-    var splitBlanks = wordRef.innerText.split("");
+    position = ((position+1)*2)-2; //to accomadate spaces
+    let splitBlanks = wordRef.innerText.split("");
     splitBlanks[position] = charToReplace; //put a correctly guessed character in it's rightful position
     wordRef.innerText = splitBlanks.join(""); 
 }
@@ -72,8 +77,8 @@ for(let i =0; i < wordList.length; i++){
 };
 //is game running or not?
 let gameRunning = false;
-var currentWord;
-var guessesLeft = 10;
+let currentWord;
+let guessesLeft = 10;
 let correctGuesses = 0;
 
 //references to the HTML text
