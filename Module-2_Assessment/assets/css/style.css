@@ -13,13 +13,23 @@ h1,h2,h3,h4,h5,h6 {
     background-image: url("../images/planets2.png");
     background-size: 100% 100%;
     border-color: #cccccc !important;
+    
 }
 
-.my_name {
-    background-color: #4aaaa5 !important;
-    color:white !important;
+.dropdown-menu {
+    background-color: rgba(0, 0, 0, 0.445);
+    color: white;
 }
 
+.btn {
+    background-color: rgba(0, 0, 0, 0.445);
+    color: white;
+}
+.main_header a {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.445);
+    /* border: 1px solid white; */
+}
 .main_content_border {
     border-width: 3px !important;
 }
@@ -50,8 +60,8 @@ h1,h2,h3,h4,h5,h6 {
     align-items: center;
 }
 
-.footer {
+/* .footer {
     background-color: #666666 !important;
     border-top: 6px solid #4aaaa5 !important;
     height: 100px;
-}
+} */

@@ -25,13 +25,16 @@ const startGame = function() {
     }
     startRef.innerText = "You are now playing!";
     console.log(`gameRunning = ${gameRunning}`);
+    playStart();
 }
 
 const endGame = function() {
     if(guessesLeft > 0){
         startRef.innerText = "You Won! Congrats Smarty Pants! Press any key to try again.";
+        playWin();
     } else{
         startRef.innerText = "You are out of guesses! Press any key to try again.";
+        playLose();
     };
     gameRunning = false;
     console.log(`gameRunning = ${gameRunning}`);
@@ -57,16 +60,17 @@ function checkKey(event) {
     console.log(typeof(key));
     //let position = currentWord.search(key); //numerical position of the letter guessed in the word. Used the search() method at first, but later had to make own function to accomadate for duplicate letters.
     let positions = getPositions(key, currentWord);
-    letterRef.innerText += (key + "\xa0\xa0\xa0\xa0\xa0"); //show each letter guessed
+    letterRef.innerText += (key + "\xa0\xa0"); //show each letter guessed
 
     if(positions.length > 0){ //if the letter guessed is in the word, update the word, showing the correct letter(s) in it
+        playCorrect();
         for(let i = 0; i < positions.length; i++){ 
             updateBlanks(positions[i], key);
         }
         correctGuesses+=positions.length;
         correctGuessesRef.innerText = correctGuesses;
         if(correctGuesses === currentWord.length){endGame();};
-    };
+    } else {playIncorrect();};
 
     guessesLeft--; //decrease guesses
     guessesRef.innerText = guessesLeft;
@@ -93,11 +97,32 @@ function updateBlanks(position, charToReplace) {
     wordRef.innerText = splitBlanks.join(""); 
 }
 
-
+function playStart() {
+    let aud = document.getElementById("playstart");
+    aud.play();
+}
+function playWin() {
+    let aud = document.getElementById("playwin");
+    aud.play();
+};
+function playCorrect() {
+    let aud = document.getElementById("playcorrect");
+    aud.play();
+}
+function playLose() {
+    let aud = document.getElementById("playlose");
+    aud.play();
+}
+function playIncorrect() {
+    let aud = document.getElementById("playincorrect");
+    aud.play();
+}
 /**************************************************************************
  MAIN
  *************************************************************************/
  
+//play audio when page opens
+
 
 //make a list of words
 const wordList = ["space", "astronaut", "Armstrong", "Aldrin", "Apollo", "Mercury", "Earth", "Mars", "Venus", "Jupiter", "Saturn", "Neptune",
