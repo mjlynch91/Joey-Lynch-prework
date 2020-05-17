@@ -19,7 +19,6 @@ const startGame = function() {
     letterRef.innerText = "";  //reset letters already guessed
     wordRef.innerText = ""; //reset current word text
     correctGuesses = 0; //reset number of correct guesses
-    correctGuessesRef.innerText = correctGuesses;
     lettersAlreadyCorrect = []; //reset correct letters
     for(let i = 0; i < currentWord.length; i++){
         wordRef.innerText += "_" + "\xa0"; 
@@ -71,7 +70,6 @@ function checkKey(event) {
             updateBlanks(positions[i], key);
         };
         correctGuesses+=positions.length;
-        correctGuessesRef.innerText = correctGuesses;
         lettersAlreadyCorrect.push(key); //added the letter to the array of already guessed correct letters. That way you can't keep getting wins for the same letter guessed correctly over and over.
         console.log(lettersAlreadyCorrect);
         if(correctGuesses === currentWord.length){endGame();};
@@ -150,7 +148,6 @@ let lettersAlreadyCorrect = []; //keeps track of which letters were already gues
 //references to the HTML text
 let startRef = document.querySelector("#start");
 let guessesRef = document.querySelector("#guesses");
-let correctGuessesRef = document.querySelector("#wins");
 let wordRef = document.querySelector("#current_word");
 let letterRef = document.querySelector("#letters_tried");
 let gamesWonRef = document.querySelector("#gamesWon");
