@@ -2,16 +2,9 @@
 The user must guess all the letters in the word before the guesses run out. The word is chosen randomly out of a 
 list of words I made up. 
 The code is organized into 2 sections.
-The first section is where I declare and define all sections. The section is where the "main" program is.
+The first section is where I declare and define all functions. The second section is where the "main" program is.
 I'm used to coding in C so that why I broke it up this way, because that's how it's done in C.
-
-Known bugs that aren't graded (I think) so I didn't spend the time to fix them.
-- If the user types the answer to fast, the game doesn't run fast enough to work correctly. I.e. on the word "uranus" it could say #Wins = 8
-    and still not register a won game when the answer is typed too fast.
-- If you guess a correct letter more than once, it still plays woohoo sound.
 */
-
-
 
 /**************************************************************************
  Function declarations and definitions
@@ -27,6 +20,7 @@ const startGame = function() {
     wordRef.innerText = ""; //reset current word text
     correctGuesses = 0; //reset number of correct guesses
     correctGuessesRef.innerText = correctGuesses;
+    lettersAlreadyCorrect = []; //reset correct letters
     for(let i = 0; i < currentWord.length; i++){
         wordRef.innerText += "_" + "\xa0"; 
     }
@@ -50,6 +44,7 @@ const endGame = function() {
     console.log(`gameRunning = ${gameRunning}`);
 }
 
+//check if the game is running or not. If it isn't start it. If it is evaluate which key was pressed.
 const checkGame = function(event) {
     if(gameRunning === false){
         startGame();
@@ -65,7 +60,6 @@ const pickWord= function() {
 
 //function to check if the key the user pressed is in the current word
 function checkKey(event) {
-
     let key = event.key; //get the key that was pressed
     //let position = currentWord.search(key); //numerical position of the letter guessed in the word. Used the search() method at first, but later had to make own function to accomadate for duplicate letters.
     let positions = getPositions(key, currentWord); //get the all positions of the letter in the word
@@ -75,7 +69,7 @@ function checkKey(event) {
         playCorrect();
         for(let i = 0; i < positions.length; i++){ 
             updateBlanks(positions[i], key);
-        }
+        };
         correctGuesses+=positions.length;
         correctGuessesRef.innerText = correctGuesses;
         lettersAlreadyCorrect.push(key); //added the letter to the array of already guessed correct letters. That way you can't keep getting wins for the same letter guessed correctly over and over.
@@ -88,17 +82,13 @@ function checkKey(event) {
     if(guessesLeft === 0){endGame();};   
 }
 
+//function that checks if user already guessed a correct letter in the current word
 function checkIfAlreadyCorrect(character) {
-    if(lettersAlreadyCorrect.includes(character)){
-        console.log("that letter is already in word")
-        return(true);
-    } else {
-        console.log("that letter isnt in word");
-        return(false);
-    };
+    if(lettersAlreadyCorrect.includes(character)){return(true);} 
+    else {return(false);};  
 }
 
-//function that check for all occurences of letter in word and returns array of index where it occurs
+//function that checks for all occurences of letter in word and returns array of index where it occurs
 function getPositions(letter, word){
     let splitWord = Array.from(word); //splits string to array of chars. Ran into problems using string.split("") so changed to Array.from
     let positions = [];
@@ -117,7 +107,6 @@ function updateBlanks(position, charToReplace) {
     splitBlanks[position] = charToReplace; //put a correctly guessed character in it's rightful position
     wordRef.innerText = splitBlanks.join(""); 
 }
-
 
 //Play sound functions
 function playStart() {
@@ -143,24 +132,20 @@ function playIncorrect() {
 /**************************************************************************
  MAIN
  *************************************************************************/
- 
-//play audio when page opens
-
 
 //make a list of words
-// const wordList = ["space", "astronaut", "Armstrong", "Aldrin", "Apollo", "Mercury", "Earth", "Mars", "Venus", "Jupiter", "Saturn", "Neptune",
-//  "Uranus", "Pluto", "planet", "nebula", "galaxy", "star", "supernova", "asteriod", "meteor", "meteoroid", "meterorite", "blackhole", "gravity"]; //don't put any words with spaces. the code doesn't account for that
-const wordList = ["uranus"];
+const wordList = ["space", "astronaut", "Armstrong", "Aldrin", "Apollo", "Mercury", "Earth", "Mars", "Venus", "Jupiter", "Saturn", "Neptune",
+ "Uranus", "Pluto", "planet", "nebula", "galaxy", "star", "supernova", "asteriod", "meteor", "meteoroid", "meterorite", "blackhole", "gravity"]; //don't put any words with spaces. the code doesn't account for that
 for(let i =0; i < wordList.length; i++){
     wordList[i]=wordList[i].toLowerCase();
 };
-//is game running or not?
-let gameRunning = false;
-let currentWord;
-let guessesLeft = 10;
-let correctGuesses = 0;
-let gamesWon=0;
-let lettersAlreadyCorrect = [];
+
+let gameRunning = false; //is game running or not?
+let currentWord; //variable that stores current word out of wordList
+let guessesLeft = 10; //variable that keeps track of how many guesses that user has left
+let correctGuesses = 0; //variable that keeps track of how many guesses the user got correct in the current round
+let gamesWon=0; //variable that keeps track of how many total rounds the user has won
+let lettersAlreadyCorrect = []; //keeps track of which letters were already guessed correct in the current round
 
 //references to the HTML text
 let startRef = document.querySelector("#start");
@@ -172,5 +157,3 @@ let gamesWonRef = document.querySelector("#gamesWon");
 
 //upon key press, check to see whether the game is running. If it isn't start it. If it is check which key was pressed.
 document.addEventListener("keyup", checkGame);
-
-
